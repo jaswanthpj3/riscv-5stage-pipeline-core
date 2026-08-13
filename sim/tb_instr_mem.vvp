@@ -1,0 +1,69 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x58420d188900 .scope module, "tb_instr_mem" "tb_instr_mem" 2 4;
+ .timescale -9 -12;
+P_0x58420d172ae0 .param/l "ADDR_WIDTH" 0 2 6, +C4<00000000000000000000000000001010>;
+P_0x58420d172b20 .param/l "DATA_WIDTH" 0 2 7, +C4<00000000000000000000000000100000>;
+v0x58420d19e8f0_0 .var "addr", 31 0;
+v0x58420d19e9b0_0 .net "instr", 31 0, L_0x58420d19edd0;  1 drivers
+S_0x58420d188b30 .scope module, "uut" "instr_mem" 2 17, 3 2 0, S_0x58420d188900;
+ .timescale 0 0;
+    .port_info 0 /INPUT 32 "addr";
+    .port_info 1 /OUTPUT 32 "instr";
+P_0x58420d176300 .param/l "ADDR_WIDTH" 0 3 3, +C4<00000000000000000000000000001010>;
+P_0x58420d176340 .param/l "DATA_WIDTH" 0 3 4, +C4<00000000000000000000000000100000>;
+P_0x58420d176380 .param/l "DEPTH" 1 3 12, +C4<000000000000000000000000000000010000000000>;
+P_0x58420d1763c0 .param/str "INIT_FILE" 0 3 5, "sim/instructions.hex";
+L_0x58420d19edd0 .functor BUFZ 32, L_0x58420d19eb70, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+v0x58420d189070_0 .net *"_ivl_2", 31 0, L_0x58420d19eb70;  1 drivers
+v0x58420d19e340_0 .net *"_ivl_4", 11 0, L_0x58420d19ec40;  1 drivers
+L_0x79b479c65018 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v0x58420d19e420_0 .net *"_ivl_7", 1 0, L_0x79b479c65018;  1 drivers
+v0x58420d19e4e0_0 .net "addr", 31 0, v0x58420d19e8f0_0;  1 drivers
+v0x58420d19e5c0_0 .net "instr", 31 0, L_0x58420d19edd0;  alias, 1 drivers
+v0x58420d19e6f0 .array "mem", 1023 0, 31 0;
+v0x58420d19e7b0_0 .net "word_addr", 9 0, L_0x58420d19ea50;  1 drivers
+L_0x58420d19ea50 .part v0x58420d19e8f0_0, 2, 10;
+L_0x58420d19eb70 .array/port v0x58420d19e6f0, L_0x58420d19ec40;
+L_0x58420d19ec40 .concat [ 10 2 0 0], L_0x58420d19ea50, L_0x79b479c65018;
+    .scope S_0x58420d188b30;
+T_0 ;
+    %vpi_call 3 19 "$readmemh", P_0x58420d1763c0, v0x58420d19e6f0 {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0x58420d188900;
+T_1 ;
+    %vpi_call 2 23 "$dumpfile", "sim/instr_mem_wave.vcd" {0 0 0};
+    %vpi_call 2 24 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x58420d188900 {0 0 0};
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x58420d19e8f0_0, 0, 32;
+    %delay 10000, 0;
+    %vpi_call 2 28 "$display", "Addr: 0x%h | Instr: 0x%h", v0x58420d19e8f0_0, v0x58420d19e9b0_0 {0 0 0};
+    %pushi/vec4 4, 0, 32;
+    %store/vec4 v0x58420d19e8f0_0, 0, 32;
+    %delay 10000, 0;
+    %vpi_call 2 31 "$display", "Addr: 0x%h | Instr: 0x%h", v0x58420d19e8f0_0, v0x58420d19e9b0_0 {0 0 0};
+    %pushi/vec4 8, 0, 32;
+    %store/vec4 v0x58420d19e8f0_0, 0, 32;
+    %delay 10000, 0;
+    %vpi_call 2 34 "$display", "Addr: 0x%h | Instr: 0x%h", v0x58420d19e8f0_0, v0x58420d19e9b0_0 {0 0 0};
+    %pushi/vec4 12, 0, 32;
+    %store/vec4 v0x58420d19e8f0_0, 0, 32;
+    %delay 10000, 0;
+    %vpi_call 2 37 "$display", "Addr: 0x%h | Instr: 0x%h", v0x58420d19e8f0_0, v0x58420d19e9b0_0 {0 0 0};
+    %vpi_call 2 39 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb_instr_mem.v";
+    "instr_mem.v";

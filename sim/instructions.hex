@@ -1,0 +1,7 @@
+00500093  // 0x00: addi x1, x0, 5    (x1 = 5)
+00a00113  // 0x04: addi x2, x0, 10   (x2 = 10)
+002081b3  // 0x08: add  x3, x1, x2   (Data Hazard! x3 = 5 + 10 = 15)
+00302023  // 0x0C: sw   x3, 0(x0)    (Store 15 to RAM address 0)
+00002203  // 0x10: lw   x4, 0(x0)    (Load 15 from RAM into x4)
+004102b3  // 0x14: add  x5, x2, x4   (Load-Use Hazard! x5 = 10 + 15 = 25)
+00000013  // 0x18: nop

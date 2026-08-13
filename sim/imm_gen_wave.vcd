@@ -1,0 +1,40 @@
+$date
+	Thu Aug 13 22:55:34 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_imm_gen $end
+$var wire 32 ! imm_ext [31:0] $end
+$var reg 32 " instr [31:0] $end
+$scope module uut $end
+$var wire 32 # instr [31:0] $end
+$var wire 7 $ opcode [6:0] $end
+$var reg 32 % imm_ext [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b11111111111111111111111111111011 %
+b10011 $
+b11111111101100000000000010010011 #
+b11111111101100000000000010010011 "
+b11111111111111111111111111111011 !
+$end
+#10000
+b1000 !
+b1000 %
+b100011 $
+b1000001010010000100011 "
+b1000001010010000100011 #
+#20000
+b10010001101000101000000000000 !
+b10010001101000101000000000000 %
+b110111 $
+b10010001101000101000010110111 "
+b10010001101000101000010110111 #
+#30000
