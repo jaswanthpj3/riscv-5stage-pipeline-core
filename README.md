@@ -1,4 +1,4 @@
-# 🚀 5-Stage Pipelined RISC-V (RV32I) Processor Core
+# 5-Stage Pipelined RISC-V (RV32I) Processor Core
 
 [![Language](https://img.shields.io/badge/Language-Verilog--2001-blue.svg)](https://en.wikipedia.org/wiki/Verilog)
 [![Simulator](https://img.shields.io/badge/Simulator-Icarus%20Verilog-green.svg)](http://iverilog.icarus.com/)
@@ -10,7 +10,7 @@ A fully functional, synthesizable **5-Stage Pipelined 32-bit RISC-V (RV32I) Proc
 
 ---
 
-## 📌 Features & Highlights
+##  Features & Highlights
 
 *   **ISA Support:** Base RV32I integer instruction set architecture.
 *   **Pipeline Architecture:** 5 classic pipeline stages (IF, ID, EX, MEM, WB).
@@ -22,7 +22,7 @@ A fully functional, synthesizable **5-Stage Pipelined 32-bit RISC-V (RV32I) Proc
 
 ---
 
-## 📸 Waveform Verification
+##  Waveform Verification
 
 ### 1. Data Forwarding Unit (RAW Hazard Resolution)
 The Hazard Unit dynamically monitors source register dependencies (`rs1`, `rs2`) in the **EX** stage against target registers (`rd`) in the **EX/MEM** and **MEM/WB** pipeline registers. Data is forwarded directly into the ALU operand multiplexers in the EX stage, preventing pipeline throughput degradation.
@@ -51,7 +51,7 @@ When a branch condition evaluates to true in the Memory stage (`pcsrc = 1`), spe
 
 ---
 
-## 🔬 Microarchitecture Stage Breakdown
+##  Microarchitecture Stage Breakdown
 
 ### 1. Instruction Fetch (IF)
 *   **Program Counter (`pc.v`):** Maintains the current instruction memory address. Supports holds driven by `stall_pc`.
@@ -82,7 +82,7 @@ When a branch condition evaluates to true in the Memory stage (`pcsrc = 1`), spe
 
 ---
 
-## ⚡ Hazard Detection & Resolution Logic
+## Hazard Detection & Resolution Logic
 
 ### Forwarding Decision Table
 The Hazard Unit constantly evaluates register source and destination indices across stages:
