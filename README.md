@@ -21,7 +21,9 @@ A fully functional, synthesizable **5-Stage Pipelined 32-bit RISC-V (RV32I) Proc
 *   **Toolchain Integration:** Pre-configured for simulation and waveform analysis using **Icarus Verilog** and **GTKWave**.
 
 ---
+## 🏗️ Architecture Diagram
 
+![RISC-V 5-Stage Pipeline Architecture](riscv_diagram.png)
 ##  Waveform Verification
 
 ### 1. Data Forwarding Unit (RAW Hazard Resolution)
