@@ -27,7 +27,7 @@ A fully functional, synthesizable **5-Stage Pipelined 32-bit RISC-V (RV32I) Proc
 ### 1. Data Forwarding Unit (RAW Hazard Resolution)
 The Hazard Unit dynamically monitors source register dependencies (`rs1`, `rs2`) in the **EX** stage against target registers (`rd`) in the **EX/MEM** and **MEM/WB** pipeline registers. Data is forwarded directly into the ALU operand multiplexers in the EX stage, preventing pipeline throughput degradation.
 
-![Data Forwarding Waveform](assets/waveform_forwarding.png)
+![Data Forwarding Waveform](waveform_forwarding.png)
 
 *   `forward_a` / `forward_b` = `2'b10`: Forwards calculated ALU output directly from the EX/MEM pipeline register.
 *   `forward_a` / `forward_b` = `2'b01`: Forwards committed writeback data directly from the MEM/WB stage.
@@ -35,7 +35,7 @@ The Hazard Unit dynamically monitors source register dependencies (`rs1`, `rs2`)
 ### 2. Load-Use Hazard Stalling
 Because data read from Data Memory during a `lw` instruction is not available until the end of the MEM stage, data forwarding alone cannot resolve immediate register dependencies. The core automatically stalls execution for 1 clock cycle:
 
-![Load-Use Stall Waveform](assets/waveform_stall.png)
+![Load-Use Stall Waveform](waveform_stall.png)
 
 *   `stall_pc` = `1'b1`: Freezes the Program Counter register.
 *   `stall_if_id` = `1'b1`: Freezes the IF/ID pipeline register to retain the dependent instruction.
@@ -44,7 +44,7 @@ Because data read from Data Memory during a `lw` instruction is not available un
 ### 3. Control Hazard (Branch Flushing)
 When a branch condition evaluates to true in the Memory stage (`pcsrc = 1`), speculatively fetched instructions in the pipeline must be discarded:
 
-![Branch Flush Waveform](assets/waveform_branch.png)
+![Branch Flush Waveform](waveform_branch.png)
 
 *   `flush_if_id` = `1'b1` and `flush_id_ex` = `1'b1`: Clears speculatively fetched pipeline registers.
 *   The PC updates directly to `mem_branch_target` on the next active clock edge.
